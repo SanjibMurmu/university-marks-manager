@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- NEW OKLCH COLOR SYSTEM --- */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0 / 70%); /* Made slightly transparent for glass effect */
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.968 0.007 247.896);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508 / 30%);
+  --ring: oklch(0.704 0.04 256.788);
+  --transition: 150ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.129 0.042 264.695);
+    --foreground: oklch(0.984 0.003 247.858);
+    --card: oklch(0.208 0.042 265.755 / 60%);
+    --primary: oklch(0.929 0.013 255.508);
+    --primary-foreground: oklch(0.208 0.042 265.755);
+    --muted: oklch(0.279 0.041 260.031);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 15%);
+    --input: oklch(1 0 0 / 10%);
+    --ring: oklch(0.551 0.027 264.364);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px; 
+  overflow-x: hidden; 
+  overflow-y: auto;   
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- GLASSMORPHISM CARDS --- */
+.login-box, .dashboard-container {
+  margin:auto;
+  position: relative;
+  z-index: 10; 
+  background: var(--card);
+  backdrop-filter: blur(24px); 
+  -webkit-backdrop-filter: blur(24px);
+  padding: 44px 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.login-box { width: 360px; text-align: center; }
+.dashboard-container { width: 660px; }
+
+.header-title {
+  color: var(--foreground);
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.sub-text {
+  color: var(--foreground);
+  opacity: 0.7;
+  text-align: center;
+  margin: 0 0 28px;
+  font-size: 14px;
+}
+
+.input-group { margin-bottom: 18px; text-align: left; }
+
+/* --- PASSWORD TOGGLE --- */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 60px; /* Makes room so text doesn't type under the button */
+}
+
+button.password-toggle {
+  position: absolute;
+  right: 10px;
+  width: auto;
+  margin: 0;
+  padding: 6px; /* Adjusted padding for icons */
+  background: transparent;
+  color: var(--foreground);
+  opacity: 0.5;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex; /* Centers the SVG */
+  justify-content: center;
+  align-items: center;
+}
+
+button.password-toggle:hover {
+  background: transparent;
+  opacity: 1;
+  transform: translateY(-50%); /* Keeps it vertically centered on hover */
+}
+
+button.password-toggle:active {
+  transform: translateY(-50%) scale(0.95); /* Little click animation */
+}
+
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--foreground);
+  margin-bottom: 6px;
+}
+
+input, select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--foreground);
+  background: var(--input);
+  backdrop-filter: blur(8px);
+  transition: all var(--transition);
+}
+
+
+option {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 30%, transparent);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all var(--transition);
+  margin-bottom: 10px;
+}
+
+button:hover { opacity: 0.9; transform: translateY(-1px); }
+button:active { transform: translateY(1px); }
+
+.btn-success { background-color: oklch(0.646 0.222 41.116); color: white; }
+.btn-danger { background-color: var(--destructive); color: var(--destructive-foreground); }
+
+/* --- ERROR MESSAGES --- */
+.error-text {
+  color: var(--destructive);
+  font-size: 12px; /* Smaller, cleaner text */
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+  /* Creates a soft, translucent red glass effect */
+  background: color-mix(in srgb, var(--destructive) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--destructive) 30%, transparent);
+  padding: 10px 14px;
+  border-radius: calc(var(--radius) - 2px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --- TABLES --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 0;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background-color: var(--muted);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+tbody tr:hover { background-color: var(--muted); }
+
+/* --- BACKGROUND BLOBS --- */
+.background-container {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0; /* Keeps blobs behind the app */
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.7;
+  will-change: transform;
+}
+.blob-1 {
+  width: 520px; height: 520px;
+  background: #7c3aed;
+  top: -120px; left: -120px;
+  animation: blob-float-1 18s ease-in-out infinite;
+}
+.blob-2 {
+  width: 480px; height: 480px;
+  background: #06b6d4;
+  bottom: -140px; right: -100px;
+  animation: blob-float-2 22s ease-in-out infinite;
+}
+.blob-3 {
+  width: 420px; height: 420px;
+  background: #ec4899;
+  top: 40%; left: 50%;
+  animation: blob-float-3 20s ease-in-out infinite;
+}
+.blob-4 {
+  width: 360px; height: 360px;
+  background: #f59e0b;
+  top: 10%; right: 10%;
+  opacity: 0.45;
+  animation: blob-float-4 26s ease-in-out infinite;
+}
+
+@keyframes blob-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(120px, 80px) scale(1.1); }
+  66% { transform: translate(60px, 160px) scale(0.95); }
+}
+@keyframes blob-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-100px, -60px) scale(1.05); }
+  66% { transform: translate(-160px, 40px) scale(1.1); }
+}
+@keyframes blob-float-3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-30%, -60%) scale(1.15); }
+}
+@keyframes blob-float-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, 100px) scale(1.1); }
+}

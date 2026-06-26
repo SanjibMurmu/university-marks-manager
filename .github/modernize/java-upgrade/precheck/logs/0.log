@@ -1,0 +1,58 @@
+2026-06-21T05:59:56.040Z [INFO] ----------------------invoke appmod-list-jdks----------------------
+2026-06-21T05:59:56.041Z [INFO] [Tool.invoke]({name: appmod-list-jdks, modelId: auto, input: {
+  "version": "25",
+  "description": "List Java 25 installs",
+  "sessionId": "precheck",
+  "projectPath": "c:\\Users\\sanji\\Desktop\\Project"
+}}).
+2026-06-21T05:59:56.043Z [INFO] [Tool.invoke] do invoke.
+2026-06-21T05:59:56.063Z [INFO] [Tool.invoke]({result: {
+  "message": "No JDK installations found."
+}}).
+2026-06-21T05:59:56.063Z [INFO] ----------------------invoked appmod-list-jdks----------------------
+2026-06-21T05:59:56.074Z [INFO] ---------------------prepare appmod-list-jdks----------------------
+2026-06-21T05:59:56.075Z [INFO] [Tool.prepareInvocation]({name: appmod-list-jdks, input: {
+  "version": "21",
+  "description": "List Java 21 installs",
+  "sessionId": "precheck"
+}}).
+2026-06-21T05:59:56.076Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-21T05:59:56.077Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "List jdks"
+}}).
+2026-06-21T05:59:56.078Z [INFO] ----------------------prepared appmod-list-jdks----------------------
+2026-06-21T05:59:56.128Z [INFO] ----------------------invoke appmod-list-jdks----------------------
+2026-06-21T05:59:56.129Z [INFO] [Tool.invoke]({name: appmod-list-jdks, modelId: auto, input: {
+  "version": "21",
+  "description": "List Java 21 installs",
+  "sessionId": "precheck",
+  "projectPath": "c:\\Users\\sanji\\Desktop\\Project"
+}}).
+2026-06-21T05:59:56.129Z [INFO] [Tool.invoke] do invoke.
+2026-06-21T05:59:56.143Z [INFO] [Tool.invoke]({result: {
+  "message": "No JDK installations found."
+}}).
+2026-06-21T05:59:56.144Z [INFO] ----------------------invoked appmod-list-jdks----------------------
+2026-06-21T05:59:56.156Z [INFO] ---------------------prepare appmod-list-mavens----------------------
+2026-06-21T05:59:56.156Z [INFO] [Tool.prepareInvocation]({name: appmod-list-mavens, input: {
+  "includeVersion": true,
+  "description": "List Maven installs",
+  "sessionId": "precheck"
+}}).
+2026-06-21T05:59:56.157Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-06-21T05:59:56.157Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "List mavens"
+}}).
+2026-06-21T05:59:56.158Z [INFO] ----------------------prepared appmod-list-mavens----------------------
+2026-06-21T05:59:56.206Z [INFO] ----------------------invoke appmod-list-mavens----------------------
+2026-06-21T05:59:56.207Z [INFO] [Tool.invoke]({name: appmod-list-mavens, modelId: auto, input: {
+  "includeVersion": true,
+  "description": "List Maven installs",
+  "sessionId": "precheck",
+  "projectPath": "c:\\Users\\sanji\\Desktop\\Project"
+}}).
+2026-06-21T05:59:56.207Z [INFO] [Tool.invoke] do invoke.
+2026-06-21T05:59:56.224Z [INFO] [Tool.invoke]({result: {
+  "message": "No Maven installations found."
+}}).
+2026-06-21T05:59:56.225Z [INFO] ----------------------invoked appmod-list-mavens----------------------
