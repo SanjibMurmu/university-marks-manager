@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: university-marks-backend
+    env: java
+    buildCommand: "alias tput=/bin/true && mvn -B clean package -DskipTests"
+    startCommand: "java -jar target/demo-0.0.1-SNAPSHOT.jar"
