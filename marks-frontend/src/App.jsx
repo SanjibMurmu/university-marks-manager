@@ -35,7 +35,7 @@ function App() {
       params.append('password', password);
 
       // backend endpoint for login
-      const response = await axios.post(`http://localhost:8080/api/students/login?${params.toString()}`);
+      const response = await axios.post(`https://university-marks-manager.onrender.com/api/students/login?${params.toString()}`);
       
       const token = response.data;
       localStorage.setItem('jwtToken', token);
@@ -58,7 +58,7 @@ function App() {
     setResetMessage({ type: '', text: '' });
     try {
       const params = new URLSearchParams({ username, email: resetEmail });
-      const response = await axios.post(`http://localhost:8080/api/students/forgot-password?${params.toString()}`);
+      const response = await axios.post(`https://university-marks-manager.onrender.com/api/students/forgot-password?${params.toString()}`);
       setResetMessage({ type: 'success', text: response.data });
       setForgotStep(2); // Move to the token entry screen
     } catch (err) {
@@ -71,7 +71,7 @@ function App() {
     setResetMessage({ type: '', text: '' });
     try {
       const params = new URLSearchParams({ token: resetToken, newPassword });
-      const response = await axios.post(`http://localhost:8080/api/students/reset-password?${params.toString()}`);
+      const response = await axios.post(`https://university-marks-manager.onrender.com/api/students/reset-password?${params.toString()}`);
       
       setResetMessage({ type: 'success', text: 'Password reset successful! Redirecting to login...' });
       
@@ -91,7 +91,7 @@ function App() {
   const fetchDashboardData = async (token, currentRole, currentUsername) => {
     try {
       // 1. Fetch Users
-      const response = await axios.get('http://localhost:8080/api/students/results', {
+      const response = await axios.get('https://university-marks-manager.onrender.com/api/students/results', {
         headers: { Authorization: token }
       });
       
@@ -100,7 +100,7 @@ function App() {
         setData(response.data);
         
         // 2. NEW: Fetch Subjects exclusively for the Admin
-        const subjectResponse = await axios.get('http://localhost:8080/api/students/admin/subjects', {
+        const subjectResponse = await axios.get('https://university-marks-manager.onrender.com/api/students/admin/subjects', {
           headers: { Authorization: token }
         });
         setSubjectsData(subjectResponse.data);
@@ -122,7 +122,7 @@ function App() {
     try {
       const token = localStorage.getItem('jwtToken');
       // Call the backend to delete the user
-      await axios.delete(`http://localhost:8080/api/students/admin/delete-user/${userToDelete}`, {
+      await axios.delete(`https://university-marks-manager.onrender.com/api/students/admin/delete-user/${userToDelete}`, {
         headers: { Authorization: token }
       });
       
@@ -138,7 +138,7 @@ function App() {
   const handleDeleteSubject = async (subjectName) => {
     try {
       const token = localStorage.getItem('jwtToken');
-      await axios.delete(`http://localhost:8080/api/students/admin/delete-subject/${subjectName}`, {
+      await axios.delete(`https://university-marks-manager.onrender.com/api/students/admin/delete-subject/${subjectName}`, {
         headers: { Authorization: token }
       });
       
