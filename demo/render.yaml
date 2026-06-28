@@ -1,20 +1,20 @@
 services:
   - type: web
     name: university-marks-backend
-    env: java
+    env: docker
     rootDir: demo
-    buildCommand: "mvn -B clean package -DskipTests"
-    startCommand: "java -jar target/demo-0.0.1-SNAPSHOT.jar"
     envVars:
-      - key: JAVA_VERSION
-        value: "21"
-  
+      - key: PORT
+        value: "8080"
+      
       - key: DB_URL
         sync: false
       - key: DB_USER
         sync: false
       - key: DB_PASSWORD
         sync: false
+        
+      
       - key: ADMIN_EMAIL
         sync: false
       - key: EMAIL_APP_PASSWORD
