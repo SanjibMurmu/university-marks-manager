@@ -15,7 +15,6 @@ export default function AdminControls({ token, onRefresh }) {
         setUserMessage({ type: '', text: '' });
 
         try {
-            // Convert parameters to URL-encoded format for @RequestParam compatibility
             const params = new URLSearchParams({
                 username: userForm.username,
                 password: userForm.password,
@@ -24,7 +23,7 @@ export default function AdminControls({ token, onRefresh }) {
                 email: userForm.email
             });
 
-            const response = await fetch(`http://localhost:8080/api/students/admin/add-user?${params.toString()}`, {
+            const response = await fetch(`https://university-marks-manager.onrender.com/api/students/admin/add-user?${params.toString()}`, {
                 method: 'POST',
                 headers: { 'Authorization': token }
             });
@@ -54,7 +53,7 @@ export default function AdminControls({ token, onRefresh }) {
                 teacherUsername: subjectForm.teacherUsername
             });
 
-            const response = await fetch(`http://localhost:8080/api/students/admin/add-subject?${params.toString()}`, {
+            const response = await fetch(`https://university-marks-manager.onrender.com/api/students/admin/add-subject?${params.toString()}`, {
                 method: 'POST',
                 headers: { 'Authorization': token }
             });
